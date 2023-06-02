@@ -177,8 +177,9 @@ namespace unitree_legged_control
 
         currentPos = joint.getPosition();
         currentVel = computeVel(currentPos, (double)lastState.q, (double)lastState.dq, period.toSec());
-        calcTorque = computeTorque(currentPos, currentVel, servoCmd);      
-        effortLimits(calcTorque);
+//        calcTorque = computeTorque(currentPos, currentVel, servoCmd);
+	    calcTorque = computeTorqueLarge(currentPos, currentVel, servoCmd);
+	    effortLimits(calcTorque);
 
         joint.setCommand(calcTorque);
 
